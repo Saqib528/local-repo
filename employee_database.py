@@ -38,6 +38,12 @@ cur.execute(""" UPDATE employee_id SET department= 'Assistant Director'
 
             """)
 
+
+#cur.execute("DELETE FROM employee_id WHERE id = 2")
+
+
+#conn.commit()
+
 cur.execute("SELECT*FROM employee_id ")
 
 row = cur.fetchall()
