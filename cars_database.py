@@ -36,7 +36,7 @@ cur.execute("SELECT *FROM  cars_data")
 
 row=cur.fetchall()
 
-print(" TABLE OF CONTENT")
+print(" CARS DATABASE TABLE ")
 for rows in row:
     print(rows)
 
