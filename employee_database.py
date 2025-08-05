@@ -32,7 +32,13 @@ cur.executemany('INSERT INTO employee_id(name,age,e_mail,department)VALUES(?,?,?
 
 conn.commit()
 
-cur.execute('SELECT*FROM employee_id')
+cur.execute(""" UPDATE employee_id SET department= 'Assistant Director'
+            
+            WHERE department = 'HR'
+
+            """)
+
+cur.execute("SELECT*FROM employee_id ")
 
 row = cur.fetchall()
 
