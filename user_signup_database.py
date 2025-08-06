@@ -64,15 +64,34 @@ cur.execute("SELECT name FROM sqlite_master WHERE type ='table'; ")
 tables=cur.fetchone()
 if tables:
     print(f"THE EXISTING TABLE NAME IS : {tables[0]}")
+
+    print("------------------------------------------------------------------")
+    print("")
 else:
     print("TABLE NOT FOUND ")
 
 cur.execute("SELECT rowid, *FROM user")
 
+
+
+
 row=cur.fetchall()
 
 for rows in row:
     print(rows)
+
+    print("")
+
+
+cur.execute("SELECT *FROM user WHERE last_name = 'Ahmed' ")
+
+row=cur.fetchall()
+print("SELECTED ITEMS ARE :")
+print("---------------------------------------------------------------")
+for rows in row:
+    print(rows)
+    print("")
+
 
 conn.close()
 
