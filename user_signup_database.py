@@ -28,10 +28,33 @@ user=[
 ]
 
 cur.executemany("INSERT INTO user (first_name,last_name,date_of_birth,gender,e_mail)VALUES(?,?,?,?,?)",user)
+cur.execute("ALTER TABLE user RENAME TO old_user")
+
+cur.execute("""CREATE TABLE user(
+            
+            first_name TEXT,
+            last_name TEXT,
+            date_of_birth INTEGER,
+            e_mail TEXT
+            
+            
+            )
+
+
+""")
+
+
+cur.execute("""INSERT INTO user(first_name,last_name,date_of_birth,e_mail)
+SELECT first_name,last_name,date_of_birth,e_mail FROM old_user
+""")
+
+
+cur.execute('DROP TABLE old_user')
+
 
 conn.commit()
 
-cur.execute("SELECT *FROM user")
+cur.execute("SELECT rowid, *FROM user")
 
 row=cur.fetchall()
 
@@ -40,6 +63,6 @@ for rows in row:
 
 conn.close()
 
-import os 
-if os.path.exists('sign_up.db'):
-    os.remove('sign_up.db')
+#import os 
+#if os.path.exists('sign_up.db'):
+    #os.remove('sign_up.db')
