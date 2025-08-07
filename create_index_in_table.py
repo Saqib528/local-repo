@@ -50,3 +50,8 @@ for row in rows:
     print("")
 
 
+cur.execute("PRAGMA table_info(stud_data)")
+
+columns = cur.fetchall()
+for col in columns:
+    print(col)
